@@ -4,13 +4,27 @@ var request = require('request');
 var cheerio = require('cheerio');
 var fs = require('fs');
 var path = require('path');
+var users = require('../src/api/users')
+var subject = require('../src/api/subject')
+router.get('/subject', function (req, res) {
+    res.json(subject.findAll());
+});
 
-
-
+router.get('/subject/:code', function (req, res) {
+    var code = req.params.code;
+    res.json(subject.findById(code));
+});
 // router.get('/xxx',function(req,res){
 //   res.sendFile(path.join(__dirname + '/template/index.html'))
 // })
+router.get('/user', function (req, res) {
+    res.json(users.findAll());
+});
 
+router.get('/user/:id', function (req, res) {
+    var id = req.params.id;
+    res.json(users.findById(id));
+});
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Pre-Course : KMUTNB' });
 });

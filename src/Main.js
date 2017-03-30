@@ -3,7 +3,7 @@ import ListMother  from './components/ListMother'
 import Pageone from './components/Pageone'
 import Pagetwo from './components/Pagetwo'
 import Pagethree from './components/Pagethree'
-import Progress from './components/Progress'
+
 import Header from './Header'
 class Main extends React.Component{
   constructor(){
@@ -41,7 +41,6 @@ class Main extends React.Component{
     const { showReplyPageone,showReplyPagetwo,showReplyPagethree } = this.state
     return(
       <div>
-      <Progress/>
         { showReplyPageone && <Pageone gotwo={ this.goPagetwo }/> }
         { showReplyPagetwo && <Pagetwo gothree={ this.goPagethree }/> }
         { showReplyPagethree && <Pagethree/> }

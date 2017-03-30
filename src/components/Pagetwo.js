@@ -2,7 +2,7 @@ import React from'react'
 import Pagetree from'./Pagethree'
 import Show from'./Show'
 import {findSection} from '../api/section'
-
+import Progresstwo from './Progresstwo'
 class Pagetwo extends React.Component{
   constructor(){
     super()
@@ -70,22 +70,28 @@ class Pagetwo extends React.Component{
 
     const specialSectionShow = specialSection.map((res)=>{
       return (
-        <div className="square col-md-1">
-          {res.section}
-          {res.day}
-          {res.time}
-        </div>
+
+          <div className="col-xs-2">
+            <div className="card text-center secCard" >
+              <div className="card-block">
+                <h4 className="card-title">{res.section}</h4>
+                <p className="card-subtitle mb-2 " styles="{res.day}">Mon</p>
+                <p className="card-text">{res.time}</p>
+              </div>
+            </div>
+          </div>
+
       )
     })
 
     return(
       <div className="container">
-
+        <Progresstwo/>
       	<div className="input-group zzz">
             	<input type="text" onChange={ this.searchUpdate } className="form-control input-lg xxx" placeholder="Name or ID"/>
 
             	<br/><span className="input-group-btn">
-              	<button className="btn btn-info btn-md btn-lg" type="button">Search</button>
+              	<button className="btn btn-info btn-md btn-lg btn2" type="button">Search</button>
             	</span>
           </div>
           <div className="list-group searchDown">

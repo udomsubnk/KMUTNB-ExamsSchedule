@@ -1,9 +1,9 @@
 import React from'react'
-export default class Progress extends React.Component{
+export default class Progressthree extends React.Component{
   render(){
     return(
       <div className="circle container">
-      </div>
+      3</div>
     )
   }
 }

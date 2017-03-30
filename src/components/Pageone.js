@@ -1,30 +1,38 @@
 import React from'react'
 import Pagetwo from'./Pagetwo'
+import {findCurrent} from '../api/current'
+import Progressone from './Progressone'
 export default class Pageone extends React.Component{
   constructor(){
     super()
-    this.state ={
-      val:[]
+    this.state={
+      av:[]
     }
     this.selectSubject = this.selectSubject.bind(this)
   }
   selectSubject(e){
-    
-
+    const { av } = this.state
+    const x = e.target.value
+    const successx = findCurrent(x)
+    this.setState({
+      av:successx
+    })
   }
   render(){
     const { gotwo } = this.props
+    const { av } = this.state
     return(
 
       <div className="row">
+      <Progressone/>
       <div className="container middle">
         <form className="eiei">
           <div className="row m0">
             <div className="col-md-1 col-xs-2 text-center topic-text">
               <label>คณะ</label>
             </div>
-            <div className="col-md-11 col-xs-10" onChange={this.selectSubject}>
-              <select className="form-control input-lg" id="sel1">
+            <div className="col-md-11 col-xs-10">
+              <select className="form-control input-lg" id="sel1" onChange={this.selectSubject}>
                 <option selected disabled>เลือกคณะ</option>
                 <option value="01">คณะวิศวกรรมศาสตร์</option>
                 <option value="02">คณะครุศาสตร์อุตสาหกรรม</option>
@@ -32,7 +40,7 @@ export default class Pageone extends React.Component{
                 <option value="04">คณะวิทยาศาสตร์ประยุกต์</option>
                 <option value="05">คณะอุตสาหกรรมเกษตร</option>
                 <option value="06">คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
-                <option value="07">คณะเทคโนโลยีสารสนเทศ</option>
+                <option value="06">คณะเทคโนโลยีและการจัดการอุตสาหกรรม</option>
               </select>
             </div>
           </div>
@@ -43,19 +51,18 @@ export default class Pageone extends React.Component{
             <div className="col-md-11 col-xs-10">
               <div className="dropdown">
                 <select className="form-control input-lg" id="sel1">
-                  <option selected disabled>เลือกหลักสูตร</option>
-                  <option>วิทยาการคอมพิวเตอร์</option>
-                  <option>วิทยาการคอมพิวเตอร์</option>
-                  <option>วิทยาการคอมพิวเตอร์</option>
-                  <option>วิทยาการคอมพิวเตอร์</option>
-                  <option>วิทยาการคอมพิวเตอร์</option>
+                  {
+                    av.map((res)=>{
+                      return <option>{res.curr_name}</option>
+                    })
+                  }
                 </select>
               </div>
             </div>
             </div>
             <div className="row m0">
               <div className="col-md-1 col-xs-2 text-center topic-text">
-                <label>ประเภทนักศึกษา</label>
+                <label>หลักสูตร</label>
               </div>
               <div className="col-md-5 col-xs-4">
                 <div className="dropdown">
@@ -124,7 +131,7 @@ export default class Pageone extends React.Component{
 
               <div className="col-md-12 col-xs-12">
 
-                  <button type="button" onClick={ ()=> gotwo() } className="btn btn-primary size-menu2 btn-lg">ดึงวิชา</button>
+                  <button type="button" onClick={ ()=> gotwo() } className="btn btn-primary size-menu2 btn-lg btn1">ดึงวิชา</button>
 
               </div>
             </div>

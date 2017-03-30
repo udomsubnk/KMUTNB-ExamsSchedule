@@ -28,7 +28,7 @@ export default class ListMother extends React.Component{
     return(
       <div className="container">
         <div className="row">
-          {Show}
+          
         </div>
       </div>
     )

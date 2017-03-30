@@ -4,3 +4,27 @@
 .w{
   width:40%;
 }
+.circle {
+  margin-top:3%;
+	width: 100px;
+	height: 100px;
+	background: green;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50%;
+
+
+
+}
+.square {
+    background: green;
+    width: 100px;
+    height: 50px;
+    border-radius: 10%;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.searchDown{
+	overflow-y: scroll;
+	height: 125px;
+}

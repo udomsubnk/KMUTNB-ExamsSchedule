@@ -25,7 +25,7 @@ router.get('/user/:id', function (req, res) {
     var id = req.params.id;
     res.json(users.findById(id));
 });
-router.get('/', function(req, res, next) {
+router.get('/ggwp', function(req, res, next) {
   res.render('index', { title: 'Pre-Course : KMUTNB' });
 });
 

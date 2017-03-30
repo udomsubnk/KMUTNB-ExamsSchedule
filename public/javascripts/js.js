@@ -1,4 +1,17 @@
 $(document).ready(function() {
+	$('.status-page-two').hide()
+	$('.status-page-three').hide()
+	$('.click-change').click(function(e){
+		e.preventDefault()
+		$('.status-page-one').hide()
+		$('.status-page-two').show()
+
+	})
+	$('.click-change-2').click(function(e){
+		e.preventDefault()
+		$('.status-page-two').hide()
+		$('.status-page-three').show()
+	})
 	$('#button').click(function(event) {
 		var id = $("#id").val()
 		$.ajax({
@@ -25,7 +38,7 @@ function course1(){
 	        <td>Programming II</td>
 	        <td><button type="button" class="btn btn-success" onclick="addcourse(1)" id="btn-course1">Add</button></td>
   		</tr>
-	`)	
+	`)
 }
 function course2(){
 	$('#courses').append(`

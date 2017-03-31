@@ -1,12 +1,11 @@
 import React from'react'
-import Progressthree from './Progressthree'
+
 class Pagethree extends React.Component{
 
   render(){
 
     return(
       <div className="container">
-        <Progressthree/>
         <center><h1 className="zzz">Summary</h1></center>
         <center><h3>Credits : <span id="credits">0</span></h3></center>
         <center><h4 className="mgt20">Study Schudule</h4></center>

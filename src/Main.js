@@ -1,51 +1,46 @@
 import React from'react'
-import ListMother  from './components/ListMother'
-import Pageone from './components/Pageone'
-import Pagetwo from './components/Pagetwo'
-import Pagethree from './components/Pagethree'
+import Pageone from './pages/Pageone'
+import Pagetwo from './pages/Pagetwo'
+import Pagethree from './pages/Pagethree'
 
 import Header from './Header'
-class Main extends React.Component{
-  constructor(){
+class Main extends React.Component {
+  constructor() {
     super()
-    this.state={
-      showReplyPageone:true,
-      showReplyPagetwo:false,
-      showReplyPagethree:false,
+    this.state = {
+      ReplyPageone:true,
+      ReplyPagetwo:false,
+      ReplyPagethree:false,
 
     }
     this.goPagetwo = this.goPagetwo.bind(this)
     this.goPagethree = this.goPagethree.bind(this)
   }
   goPagetwo(){
-
-    const { showReplyPageone,showReplyPagetwo,showReplyPagethree,val } = this.state
-    console.log();
-    this.setState({
-      showReplyPageone:false,
-      showReplyPagetwo:true,
-      showReplyPagethree:false
-
+    const { ReplyPageone,ReplyPagetwo,ReplyPagethree,status } = this.state
+    this.setState ({
+      ReplyPageone:false,
+      ReplyPagetwo:true,
+      ReplyPagethree:false
     })
 
   }
   goPagethree(){
-    const { showReplyPageone,showReplyPagetwo,showReplyPagethree } = this.state
-    this.setState({
-      showReplyPageone:false,
-      showReplyPagetwo:false,
-      showReplyPagethree:true
+    const { ReplyPageone,ReplyPagetwo,ReplyPagethree } = this.state
+    this.setState ({
+      ReplyPageone:false,
+      ReplyPagetwo:false,
+      ReplyPagethree:true
     })
   }
   render(){
-    const { showReplyPageone,showReplyPagetwo,showReplyPagethree } = this.state
-    return(
+    const { ReplyPageone,ReplyPagetwo,ReplyPagethree } = this.state
+    return (
       <div>
-        { showReplyPageone && <Pageone gotwo={ this.goPagetwo }/> }
-        { showReplyPagetwo && <Pagetwo gothree={ this.goPagethree }/> }
-        { showReplyPagethree && <Pagethree/> }
+        { ReplyPageone && <Pageone gotwo={ this.goPagetwo }/> }
+        { ReplyPagetwo && <Pagetwo gothree={ this.goPagethree }/> }
+        { ReplyPagethree && <Pagethree/> }
       </div>
-
     )
   }
 }

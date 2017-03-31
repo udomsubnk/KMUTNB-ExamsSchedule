@@ -1,8 +1,8 @@
 import React from'react'
 import Pagetree from'./Pagethree'
-import Show from'./Show'
+import SubjectSearchItem from'../components/SubjectSearchItem'
 import {findSection} from '../api/section'
-import Progresstwo from './Progresstwo'
+import DisplaySectionItem from '../components/DisplaySectionItem'
 class Pagetwo extends React.Component{
   constructor(){
     super()
@@ -48,7 +48,6 @@ class Pagetwo extends React.Component{
         }
       )
     }
-    console.log(val);
     this.setState({
       val:val,
       ShowData:ShowData
@@ -60,48 +59,38 @@ class Pagetwo extends React.Component{
     const { gothree,data } = this.props
     const { subject,ShowData,specialSection } = this.state
 
-    const show = ShowData.map((res)=>{
-      return (
+    const showDropdownSearch = ShowData.map((res)=>{
+      return(
               <div onClick={ this.selectCourse.bind(null,res.course_id) }>
-                <Show  data={res}/ >
+                <SubjectSearchItem key={ res.course_id } data={res}/ >
               </div>
             )
     })
 
-    const specialSectionShow = specialSection.map((res)=>{
-      return (
-
-          <div className="col-xs-2">
-            <div className="card text-center secCard" >
-              <div className="card-block">
-                <h4 className="card-title">{res.section}</h4>
-                <p className="card-subtitle mb-2 " styles="{res.day}">Mon</p>
-                <p className="card-text">{res.time}</p>
-              </div>
-            </div>
-          </div>
-
-      )
+    const showSpecialSection = specialSection.map((data)=>{
+      return(
+          <DisplaySectionItem sectionName={ data }/>
+        )
     })
 
     return(
       <div className="container">
-        <Progresstwo/>
-      	<div className="input-group zzz">
-            	<input type="text" onChange={ this.searchUpdate } className="form-control input-lg xxx" placeholder="Name or ID"/>
-
-            	<br/><span className="input-group-btn">
-              	<button className="btn btn-info btn-md btn-lg btn2" type="button">Search</button>
-            	</span>
+          <div className="input-group zzz">
+            <input type="text" onChange={ this.searchUpdate } className="form-control input-lg xxx" placeholder="Name or ID"/>
+            <br/>
+            <span className="input-group-btn">
+              <button className="btn btn-info btn-md btn-lg btn2" type="button">Search</button>
+            </span>
           </div>
           <div className="list-group searchDown">
-            {show}
+
+            { showDropdownSearch }
+
           </div>
-          { specialSectionShow }
 
+          { showSpecialSection }
 
-
-      	<table className="table table-hover table-courses table-responsive">
+          <table className="table table-hover table-courses table-responsive">
           	<thead>
             		<tr>
       	        	<th className="col-md-3 col-xs-3 col-sm-3 col-lg-3">ID</th>

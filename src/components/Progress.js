@@ -7,17 +7,18 @@ export class ProgressBar extends Component {
         this.pageTwo = this.pageTwo.bind(this)
     }
     pageOne(){
-        this.props.goPageOne()
+        const { everSelect } = this.props
+        this.props.goPageOne(everSelect)
     }
     pageTwo(){
         const { ReplyPagethree} = this.props.replyPage
-        const { section_id,goPagetwo } = this.props
+        const { section_id,goPagetwo,everSelect } = this.props
         if(ReplyPagethree == true){
             let data=[]
             for(let i in section_id){
                 data.push(findSectionFromSection_id(section_id[i]))
             }
-            goPagetwo(data)
+            goPagetwo(data,everSelect)
         }
     }
     render() {

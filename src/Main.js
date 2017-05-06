@@ -26,29 +26,33 @@ class Main extends React.Component {
       subjectboxFri:{},
       subjectboxSat:{},
       dayExambox:{},
-      daybox:{}
+      daybox:{},
+      everSelect:[]
     }
     this.goPageOne = this.goPageOne.bind(this)
     this.goPagetwo = this.goPagetwo.bind(this)
     this.goPagethree = this.goPagethree.bind(this)
   }
-  goPageOne(){
+  goPageOne(everSelects){
     var url = '/'
     window.history.pushState(null, null,url);
+    
     this.setState ({
       ReplyPageone:true,
       ReplyPagetwo:false,
       ReplyPagethree:false,
+      everSelect:everSelects
     })
   }
-  goPagetwo(courses){
+  goPagetwo(courses,everSelects){
     var url = '/'
     window.history.pushState(null, null,url);
     this.setState ({
       ReplyPageone:false,
       ReplyPagetwo:true,
       ReplyPagethree:false,
-      dataFormPageOne:courses
+      dataFormPageOne:courses,
+      everSelect:everSelects
     })
   }
 
@@ -121,14 +125,15 @@ class Main extends React.Component {
       subjectboxFri,
       subjectboxSat,
       dayExambox,
-      daybox
+      daybox,
+      everSelect
     } = this.state
     const reply = {ReplyPageone,ReplyPagetwo,ReplyPagethree}
     return (
       <div className="container">
         <Header />
-        <ProgressBar replyPage = { reply } goPageOne = { this.goPageOne } goPagetwo = { this.goPagetwo } section_id={tableStudy} />
-        { ReplyPageone && <Pageone gotwo={ this.goPagetwo } /> }
+        <ProgressBar replyPage = { reply } goPageOne = { this.goPageOne } goPagetwo = { this.goPagetwo } section_id={tableStudy} everSelect={ everSelect } />
+        { ReplyPageone && <Pageone gotwo={ this.goPagetwo } everSelect={ everSelect } /> }
         { ReplyPagetwo && <Pagetwo gothree={ this.goPagethree } dataPageOne = { dataFormPageOne }/> }
         { ReplyPagethree && <Pagethree 
                                 tableFinal = { tableFinal } 

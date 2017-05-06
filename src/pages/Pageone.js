@@ -26,15 +26,20 @@ export default class Pageone extends React.Component{
     this.checkSections = this.checkSections.bind(this)
   }
   componentDidMount(){
+      const { everSelect } = this.props
       act('processbar-p1');
+      if(everSelect.length == 0) 
+        return
+      console.log(everSelect)
+      //ใช้ต่อเลย แบบ $('#bb').click.attr(everSelect.kana) บราๆๆๆๆๆ
   }
- selectSubject(e){
-    const { currentName } = this.state
-    const value = e.target.value
-    const success = findCurrent(value)
-    this.setState({
-      currentName:success
-    })
+  selectSubject(e){
+      const { currentName } = this.state
+      const value = e.target.value
+      const success = findCurrent(value)
+      this.setState({
+        currentName:success
+      })
   }
   checkCourses(e){
     const { coursesSelect } = this.state
@@ -89,7 +94,7 @@ export default class Pageone extends React.Component{
     const { gotwo } = this.props
     if(coursesSelect.kana == '' || coursesSelect.laksoot== '' || coursesSelect.prapet== '' || coursesSelect.year== '' || coursesSelect.sec== ''){
       const data = []
-      gotwo(data)
+      gotwo(data,coursesSelect)
     }
     else
       chooseCourse(coursesSelect,gotwo)
@@ -110,7 +115,7 @@ export default class Pageone extends React.Component{
                 <label>คณะ </label>
               </div>
               <div className="col-md-11 col-xs-10">
-                <select className="form-control input-lg z-depth-2" onChange={ this.checkCourses } >
+                <select className="form-control input-lg z-depth-2" id="back" onChange={ this.checkCourses } >
                   <option selected disabled>---เลือกคณะ---</option>
                   <option value="01">คณะวิศวกรรมศาสตร์</option>
                   <option value="02">คณะครุศาสตร์อุตสาหกรรม</option>

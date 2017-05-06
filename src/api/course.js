@@ -6,10 +6,8 @@ exports.chooseCourse = function(coursesSelect,pageTwo){
 	.then((res)=>
 	    res.json()
 	).then((res)=>{
-	    var courses= []
-	    for(let i in res.allCourse){
-	    	courses.push(findSectionFromSection_id(res.allCourse[i]))
-	    }
-	    pageTwo(courses)
+		let courses = res.allCourse.map((courseId) => findSectionFromSection_id(courseId))
+		console.log(coursesSelect)
+	    pageTwo(courses,coursesSelect)
 	})
 }
